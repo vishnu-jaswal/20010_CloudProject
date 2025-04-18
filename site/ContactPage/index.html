@@ -147,5 +147,50 @@
         </section>
       </main>
     </div>
+
+    <script>
+      // Handle form submission
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          // Get form data
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const subject = document.getElementById("subject").value;
+          const message = document.getElementById("message").value;
+
+          // Send data to Azure Logic Apps via HTTP POST
+          fetch(
+            "https://https://prod-08.northcentralus.logic.azure.com:443/workflows/707a1505d04f4e64a8c059d86a53b45d/triggers/When_a_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_a_HTTP_request_is_received%2Frun&sv=1.0&sig=QoL0Qt3gT6lPvSOmu1ju7Jf25_hNp53N3EYUhq_DXDU",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                name: name,
+                email: email,
+                subject: subject,
+                message: message,
+              }),
+            }
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log("Email sent successfully:", data);
+              // Optionally show a success message to the user
+              alert("Your message has been sent!");
+            })
+            .catch((error) => {
+              console.error("Error sending email:", error);
+              // Optionally show an error message to the user
+              alert(
+                "There was an error sending your message. Please try again later."
+              );
+            });
+        });
+    </script>
   </body>
 </html>
