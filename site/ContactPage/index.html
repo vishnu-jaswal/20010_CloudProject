@@ -119,29 +119,29 @@
         </section>
 
         <section class="col right">
-          <form class="messageForm">
+          <form class="messageForm" id="contactForm">
             <div class="inputGroup halfWidth">
-              <input type="text" name="" required="required" />
+              <input type="text" id="name" required="required" />
               <label>Your Name</label>
             </div>
 
             <div class="inputGroup halfWidth">
-              <input type="email" name="" required="required" />
+              <input type="email" id="email" required="required" />
               <label>Email</label>
             </div>
 
             <div class="inputGroup fullWidth">
-              <input type="text" name="" required="required" />
+              <input type="text" id="subject" required="required" />
               <label>Subject</label>
             </div>
 
             <div class="inputGroup fullWidth">
-              <textarea required="required"></textarea>
+              <textarea id="message" required="required"></textarea>
               <label>Say Something</label>
             </div>
 
             <div class="inputGroup fullWidth">
-              <button>Send Message</button>
+              <button type="submit">Send Message</button>
             </div>
           </form>
         </section>
